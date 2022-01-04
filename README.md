@@ -17,7 +17,7 @@
 
 ### Preview
 
-<img align="left" alt="HomePage" width="280px" src="./IMG/HomePage1.png"/>
-<img align="left" alt="HomePage" width="280px" src="./IMG/HomePage2.png" />
-<img align="left" alt="Favorites Page" width="280px" src="./IMG/Favorites.png"/>
+<img align="left" alt="HomePage" width="200px" src="./IMG/HomePage1.png"/>
+<img align="left" alt="HomePage" width="200px" src="./IMG/HomePage2.png" />
+<img align="left" alt="Favorites Page" width="200px" src="./IMG/Favorites.png"/>
 
