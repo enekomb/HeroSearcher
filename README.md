@@ -12,13 +12,12 @@
 
 
 <br />
-<br />
 
 ---
 
 ### Preview
 
-<!-- [<img align="left" alt="HomePage" width="26px" src="\IMG\HomePage1.png"/>][]
-[<img align="left" alt="HomePage" width="26px" src="\IMG\HomePage2.png"" />][]
-[<img align="left" alt="Favorites Page" width="26px" src="\IMG\Favorites.png"" />][] -->
+<img align="left" alt="HomePage" width="26px" src="./IMG/HomePage1.png"/>
+<img align="left" alt="HomePage" width="26px" src="./IMG/HomePage2.png" />
+<img align="left" alt="Favorites Page" width="26px" src="./IMG/Favorites.png"/>
 
