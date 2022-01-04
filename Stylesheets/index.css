@@ -1,0 +1,116 @@
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.topnav {
+    background:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTXQKnLXPdQhC927NAm3Nn3NOTixNJxH9_lQ&usqp=CAU");
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: whitesmoke;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Monofett';
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    color: white;
+  }
+
+  .container2{
+      justify-content: center;
+      display: flex;
+  }
+
+.search{
+    display: flex;
+    flex-direction: column;
+    margin-left: 500px;
+    width: 400px;
+    background-color: black;
+    margin-top: 60px;
+}
+
+.container4{
+    display: flex;
+    justify-content: center;
+}
+
+.stats{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+
+body{
+    background-color: grey;
+    background:url("https://st2.depositphotos.com/4497889/43203/v/600/depositphotos_432031086-stock-video-4k-video-footage-motion-of.jpg");
+    color:green;
+    font-family: 'Comic Neue';
+}
+
+
+.aleatorio{
+    margin-left: 500px;
+    margin-top: 70px;
+}
+
+
+h1{
+    display: flex;
+    justify-content: center;
+}
+
+footer{
+    display: flex;
+}
+.video{
+    margin-left: 450px;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+}
+
+
+@media only screen and (max-width: 768px) {
+    
+.aleatorio{
+    margin-left: 0px;
+}
+
+
+.video{
+    margin-left: 0px;
+}
+
+
+h1{
+    font-size: medium;
+}
+
+.tovnav {
+font-size: xx-small;
+}
+
+    
+}
