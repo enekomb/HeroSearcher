@@ -1,6 +1,6 @@
 ### Hi there, this is my first project 👋 
 - It's about a superheroes and villains searcher engine which you can view their stats and add them to your favourites
-<br />
+
 
 ### Languages and Tools:
 
