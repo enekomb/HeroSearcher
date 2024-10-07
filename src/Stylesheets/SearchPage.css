@@ -1,0 +1,120 @@
+/* Estilos generales */
+.container {
+	color: white;
+	font-family: 'Comic Neue', sans-serif;
+	padding: 20px;
+  }
+  
+  header {
+	text-align: center;
+  }
+  
+  .search-container {
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+  }
+  
+  .search-input {
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	margin-right: 10px;
+	width: 300px; /* Ancho fijo para una mejor apariencia */
+  }
+  
+  .search-button {
+	padding: 10px;
+	border-radius: 4px;
+	border: none;
+	background-color: #007BFF;
+	color: white;
+	cursor: pointer;
+  }
+  
+  .results-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 20px;
+  }
+  
+  .result-card {
+	background: transparent; /* Sin fondo en las cartas de resultados */
+	border-radius: 8px;
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
+	width: 150px; /* Ancho fijo para mantener la consistencia */
+	height: 250px; /* Altura fija para todas las cartas */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+  }
+  
+  .result-image {
+	width: 100%;
+	height: auto;
+	max-height: 150px; /* Altura máxima para las imágenes */
+	border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
+	object-fit: cover; /* Mantiene la proporción de la imagen */
+  }
+  
+  .favorite-button {
+	margin-top: 10px;
+	padding: 5px 10px;
+	background-color: #FFC107;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+  
+  /* Estilos para el carrusel */
+  .carousel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 20px 0;
+  }
+  
+  .carousel-button {
+	color: white;
+	background: none;
+	border: none;
+	font-size: 30px;
+	cursor: pointer;
+  }
+  
+  .hero-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden; /* Para ocultar contenido adicional */
+  }
+  
+  .hero-card {
+	background: transparent; /* Sin fondo en las cartas del carrusel */
+	border-radius: 8px;
+	margin: 0 10px; /* Espaciado entre tarjetas */
+	text-align: center;
+	width: 150px; /* Ancho fijo para mantener la consistencia */
+	height: 250px; /* Altura fija para todas las cartas */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+  }
+  
+  .hero-image {
+	width: 100%;
+	height: auto;
+	max-height: 150px; /* Altura máxima para las imágenes */
+	border-radius: 8px 8px 0 0; /* Bordes redondeados en la parte superior */
+	object-fit: cover; /* Mantiene la proporción de la imagen */
+  }
+  
+  h3 {
+	margin: 20px 0; /* Aumentar el margen para mayor espacio entre la imagen y el texto */
+  }
+  
+  /* Estilo de carga */
+  .loading {
+	text-align: center;
+	font-size: 18px;
+	color: white;
+  }

@@ -1,0 +1,86 @@
+/* src/Stylesheets/Navbar.css */
+.topnav {
+	background: rgb(32, 32, 32);
+	padding: 15px 20px;
+	display: flex;
+	justify-content: space-between; /* Distribute links and user avatar */
+	align-items: center;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .navLinks {
+	display: flex;
+	align-items: center;
+	gap: 30px; /* Space between buttons */
+  }
+  
+  /* General button styles for links */
+  .nav-btn {
+	background-color: transparent;
+	color: white;
+	padding: 10px 20px;
+	font-size: 16px;
+	text-transform: uppercase;
+	border: 2px solid transparent;
+	border-radius: 25px;
+	text-decoration: none;
+	font-family: 'Arial', sans-serif;
+	transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  .nav-btn:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+	border-color: #fff;
+  }
+  
+  .nav-btn.active {
+	background-color: #4CAF50;
+	color: #fff;
+  }
+  
+  .logout {
+	color: black;
+	background-color: #f44336; /* Red color for logout button */
+	border-color: #f44336;
+  }
+  
+  .logout:hover {
+	background-color: #ff6659;
+  }
+  
+  /* Styles for the user avatar */
+  .user-avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: white;
+	margin-left: 15px;
+  }
+  
+  /* User section container */
+  .user-section {
+	display: flex;
+	align-items: center;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+	.topnav {
+	  flex-direction: column;
+	}
+  
+	.navLinks {
+	  flex-direction: column;
+	  gap: 15px;
+	}
+  
+	.nav-btn {
+	  width: 100%;
+	  text-align: center;
+	}
+  
+	.user-section {
+	  margin-top: 15px;
+	}
+  }
+  
