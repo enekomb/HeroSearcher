@@ -1,79 +1,65 @@
 .home-container {
-	color: white;
-	padding: 20px;
-	max-width: 1200px;
-	margin: 0 auto;
-	text-align: center;
-  }
-  
-  h1 {
-	font-size: 2.5rem;
-	margin-bottom: 20px;
-  }
-  
-  h2 {
-	font-size: 2rem;
-	margin-top: 40px;
-	margin-bottom: 20px;
-  }
-
-  .trailers {
 	display: flex;
-	justify-content: space-between;
-	gap: 20px;
-	margin-bottom: 40px;
-  }
-  
-  .trailer-card {
-	width: 45%;
-  }
-  
-  .trailer-card p {
-	margin-top: 10px;
-	font-size: 1.1rem;
-	font-weight: bold;
-  }
-  
-  .comics {
-	display: flex;
-	justify-content: space-between;
-	gap: 20px;
-  }
-  
-  .comic-card {
-	width: 18%;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-image: url('https://st2.depositphotos.com/4497889/43203/v/600/depositphotos_432031086-stock-video-4k-video-footage-motion-of.jpg');
+	color: #fff;
 	text-align: center;
   }
   
-  .comic-cover {
-	width: 100%;
-	height: auto;
-	border-radius: 8px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  .hero-section {
+	max-width: 800px;
+	padding: 40px;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 10px;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   }
   
-  .comic-card p {
-	margin-top: 10px;
-	font-size: 1rem;
+  .title {
+	font-size: 3rem;
+	margin-bottom: 20px;
+	color: green;
   }
-
-
-  .login-prompt-section {
-	text-align: center;
-	margin-top: 40px;
+  
+  .subtitle {
+	font-size: 1.25rem;
+	margin-bottom: 30px;
+	line-height: 1.6;
+	color: #d1d1d1;
+  }
+  
+  .cta-text {
+	font-size: 1.2rem;
+	margin-bottom: 20px;
   }
   
   .login-button {
+	padding: 12px 25px;
 	background-color: #007BFF;
 	color: white;
 	border: none;
-	padding: 15px 30px;
-	font-size: 18px;
+	border-radius: 5px;
 	cursor: pointer;
-	border-radius: 8px;
+	font-size: 18px;
 	transition: background-color 0.3s ease;
   }
   
   .login-button:hover {
 	background-color: #0056b3;
   }
+  
+  @media (max-width: 768px) {
+	.title {
+	  font-size: 2.5rem;
+	}
+  
+	.subtitle {
+	  font-size: 1rem;
+	}
+  
+	.cta-text {
+	  font-size: 1rem;
+	}
+  }
+  
