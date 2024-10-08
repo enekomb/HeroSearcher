@@ -5,6 +5,7 @@ import '../Stylesheets/Navbar.css'; // Import the CSS file
 
 const Navbar = ({ user }) => {
   const navigate = useNavigate();
+  
   const handleLogout = async () => {
     try {
       await auth.signOut();
@@ -18,21 +19,22 @@ const Navbar = ({ user }) => {
   const defaultAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUW0u5Eiiy3oM6wcpeEE6sXCzlh8G-tX1_Iw&s";
 
   return (
-    <nav className="topnav">
-      <div className="navLinks">
+    <nav className="menu-bar">
+      <ul className="nav-links">
         {user ? (
           <>
-            <NavLink to="/search" className="nav-btn" activeClassName="active">Search</NavLink>
-            <NavLink to="/favorites" className="nav-btn" activeClassName="active">Favorites</NavLink>
-            <NavLink to="/about" className="nav-btn" activeClassName="active">About</NavLink>
+            <li>
+              <NavLink to="/search" className="nav-btn">Search</NavLink>
+            </li>
+            <li>
+              <NavLink to="/favorites" className="nav-btn">Favorites</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className="nav-btn">About</NavLink>
+            </li>
           </>
-        ) : (
-          <>
-            <NavLink to="/" className="nav-btn" activeClassName="active">Homepage</NavLink>
-            <NavLink to="/login" className="nav-btn" activeClassName="active">Login</NavLink>
-          </>
-        )}
-      </div>
+        ) : (<></>)}
+      </ul>
       {user && (
         <div className="user-section">
           <button onClick={handleLogout} className="nav-btn logout">Logout</button>
