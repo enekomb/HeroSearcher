@@ -4,6 +4,7 @@ import { collection, addDoc, getDocs } from 'firebase/firestore';
 import '../Stylesheets/SearchPage.css'; // Importa el CSS
 
 const totalHeroes = 731;
+const apiKey = process.env.REACT_APP_SUPERHERO_API_KEY;
 const heroesToShow = 6; // Número de héroes a mostrar en el carrusel
 
 const SearchPage = ({ user }) => {
@@ -39,7 +40,7 @@ const SearchPage = ({ user }) => {
     const randomIndices = Array.from({ length: heroesToShow }, () => Math.floor(Math.random() * totalHeroes) + 1);
     const fetchedHeroes = await Promise.all(
       randomIndices.map(async (index) => {
-        const response = await fetch(`https://superheroapi.com/api.php/109917728141556/${index}`);
+        const response = await fetch(`https://superheroapi.com/api.php/${apiKey}/${index}`);
         const data = await response.json();
         return data;
       })
@@ -50,7 +51,7 @@ const SearchPage = ({ user }) => {
   const handleSearch = async (e) => {
     if (e.key === 'Enter' || e.type === 'click') {
       setLoading(true);
-      const link1 = `https://superheroapi.com/api.php/109917728141556/search/`;
+      const link1 = `https://superheroapi.com/api.php/${apiKey}/search/`;
       try {
         const response = await fetch(link1 + heroName);
         const data = await response.json();
