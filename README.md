@@ -1,23 +1,105 @@
-### Hi there, this is my first project 👋 
-- It's about a superheroes and villains searcher engine which you can view their stats and add them to your favourites
+# 🦸‍♂️ Superheroes & Villains Search Engine
 
+Welcome to my first web development project! 🎉
 
-### Languages and Tools:
-
-<img align="left" alt="Visual Studio Code" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />
-<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
-<img align="left" alt="CSS3" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />
-<img align="left" alt="JavaScript" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" />
-<img align="left" alt="Git" width="26px" src="https://c0.klipartz.com/pngpicture/713/558/gratis-png-iconos-de-computadora-pro-git-portable-network-graphics-logo-github-thumbnail.png" />
-
-
-<br />
+This is a search engine for superheroes and villains where you can:
+- Explore the stats of various iconic characters.
+- Add your favorites to a custom list.
+- The app uses **Firebase** to store the favorites list persistently.
+- Hosted on **Vercel** and performs API calls to fetch character data from an external API.
 
 ---
 
-### Preview
+## 🚀 Demo
 
-<img align="left" alt="HomePage" width="250px" src="./IMG/HomePage1.png"/>
-<img align="left" alt="HomePage" width="250px" src="./IMG/HomePage2.png" />
-<img align="left" alt="Favorites Page" width="260px" src="./IMG/Favorites.png"/>
+🌍 You can try the live app here: [Live Demo](https://hero-searcher.vercel.app)
 
+---
+
+## 🛠️ Technologies Used
+
+This project was built using the following technologies and tools:
+
+- **Frontend:**
+  - [React.js](https://reactjs.org/) - Main framework for the user interface.
+  - [CSS3](https://www.w3.org/Style/CSS/Overview.en.html) - Used for styling the application.
+
+- **Backend & Database:**
+  - [Firebase](https://firebase.google.com/) - NoSQL database and authentication.
+  - [REST API](https://superheroapi.com/) - External API to fetch superhero data.
+
+- **Hosting & Deployment:**
+  - [Vercel](https://vercel.com/) - Used for deploying the app.
+
+---
+
+## 📐 Application Architecture
+
+Below is a visual representation of the general architecture of the app:
+
+```mermaid
+graph TD;
+    UI[Frontend (React)] -->|Requests| API[Superheroes & Villains API];
+    UI --> Firebase[Firebase Database];
+    Firebase --> Auth[Firebase Authentication];
+    API --> Stats[Character Stats];
+    UI --> Vercel[Hosted on Vercel];
+
+```
+
+The app follows a client-server architecture. **React** manages the user interface and client-side interactions. It performs `GET` requests to an external API to fetch character data. The favorites data is stored in **Firebase**, and user sessions are handled through Firebase Authentication. The app is deployed on **Vercel**.
+
+---
+
+## 🖥️ Screenshots
+
+### Home Page
+
+<img src="./IMG/HomePage1.png" width="400" alt="Home Page" />
+
+### Favorites Page
+
+<img src="./IMG/Favorites.png" width="400" alt="Favorites Page" />
+
+*(Add more screenshots if necessary)*
+
+---
+
+## 🔧 Installation & Setup
+
+To clone and run this project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/repo-name.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd repo-name
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Create a `.env` file and add your Firebase and API environment variables
+
+
+5. Start the development server:
+
+   ```bash
+   npm start
+   ```
+
+6. Access the app at [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 📋 Contribution Guidelines
+
+Contributions are welcome! If you have suggestions or find bugs, feel free to open an [issue](https://github.com/enekomb/HeroSearcher/issues).
