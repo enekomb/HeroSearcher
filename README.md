@@ -60,8 +60,6 @@ The app follows a client-server architecture. **React** manages the user interfa
 
 <img src="./IMG/Favorites.png" width="400" alt="Favorites Page" />
 
-*(Add more screenshots if necessary)*
-
 ---
 
 ## 🔧 Installation & Setup
