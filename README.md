@@ -69,7 +69,7 @@ To clone and run this project locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/repo-name.git
+   git clone https://github.com/enekomb/HeroSearcher.git
    ```
 
 2. Navigate to the project directory:
