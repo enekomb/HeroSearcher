@@ -39,12 +39,11 @@ Below is a visual representation of the general architecture of the app:
 
 ```mermaid
 graph TD;
-    UI[Frontend (React)] -->|Requests| API[Superheroes & Villains API];
-    UI --> Firebase[Firebase Database];
-    Firebase --> Auth[Firebase Authentication];
-    API --> Stats[Character Stats];
-    UI --> Vercel[Hosted on Vercel];
-
+    UI[React Frontend] -->|Requests| API[Superheroes & Villains API];
+    UI -->|Database Operations| Firebase[Firebase Database];
+    Firebase -->|Authentication| Auth[Firebase Authentication];
+    API -->|Fetch Stats| Stats[Character Stats];
+    UI -->|Deployment| Vercel[Hosted on Vercel];
 ```
 
 The app follows a client-server architecture. **React** manages the user interface and client-side interactions. It performs `GET` requests to an external API to fetch character data. The favorites data is stored in **Firebase**, and user sessions are handled through Firebase Authentication. The app is deployed on **Vercel**.
