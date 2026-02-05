@@ -17,7 +17,7 @@ const About = () => {
       <h1>About</h1>
       <p>Welcome to HeroSearcher, your app to find your favorite comic book characters.</p>
       <p>This application allows you to search for comic characters, save your favorites, and much more.</p>
-      <p>Developed using React and Firebase, HeroSearcher offers a fast and intuitive experience.</p>
+      <p>Developed using React, Express, and SQLite, HeroSearcher offers a fast and intuitive experience.</p>
 
       <h2>Features</h2>
       <ul>
