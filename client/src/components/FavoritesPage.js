@@ -22,6 +22,24 @@ const FavoritesPage = () => {
     return () => unsubscribe();
   }, []);
 
+  // Animate stat bars after favorites are loaded
+  useEffect(() => {
+    if (favorites.length > 0) {
+      const statOrder = ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'];
+      
+      favorites.forEach((favorite, index) => {
+        statOrder.forEach((stat) => {
+          setTimeout(() => {
+            const statFillElement = document.querySelector(`.stat-fill[data-stat="stat-${stat}-${favorite.id}"]`);
+            if (statFillElement) {
+              statFillElement.style.width = `${favorite.powerstats[stat]}%`;
+            }
+          }, 500 * (index + 1));
+        });
+      });
+    }
+  }, [favorites]);
+
   const fetchUserFavorites = async (userId) => {
     setLoading(true);
     try {
@@ -85,17 +103,6 @@ const FavoritesPage = () => {
       ) : (
         <center><p>You don't have any favorites yet. Use the search bar to add the characters you like the most.</p></center>
       )}
-      {/* Load statistics with a small delay */}
-      {favorites.forEach((favorite, index) => {
-        statOrder.forEach((stat) => {
-          setTimeout(() => {
-            const statFillElement = document.querySelector(`.stat-fill[data-stat="stat-${stat}-${favorite.id}"]`);
-            if (statFillElement) {
-              statFillElement.style.width = `${favorite.powerstats[stat]}%`;
-            }
-          }, 500 * (index + 1));
-        });
-      })}
     </div>
   );
 };
