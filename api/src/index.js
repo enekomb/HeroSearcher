@@ -117,7 +117,10 @@ app.delete('/api/favorites/:id', async (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line no-console
+    console.log(`Server running on port ${PORT}`);
+  }
 });
 
 // Graceful shutdown

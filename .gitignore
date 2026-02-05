@@ -27,14 +27,17 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Database
+# Database files
 *.db
+*.sqlite
+*.sqlite3
 *.db-journal
+*.db-wal
+*.db-shm
 /api/prisma/migrations
 /api/dev.db
 
 # Prisma
 .prisma/
 generated/
-
 /src/generated/prisma
