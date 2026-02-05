@@ -74,7 +74,6 @@ export const googleSignIn = async () => {
   try {
     const result = await auth.signInWithProvider('google');
     const user = result.user;
-    console.log('Google user information:', user);
     return user;
   } catch (error) {
     console.error('Error during Google sign-in:', error);
@@ -86,7 +85,6 @@ export const githubSignIn = async () => {
   try {
     const result = await auth.signInWithProvider('github');
     const user = result.user;
-    console.log('GitHub user information:', user);
     return user;
   } catch (error) {
     console.error('Error during GitHub sign-in:', error);

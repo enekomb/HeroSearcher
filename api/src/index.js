@@ -117,7 +117,7 @@ app.delete('/api/favorites/:id', async (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  // Server started successfully
 });
 
 // Graceful shutdown
