@@ -10,7 +10,7 @@
 
 A modern, full-stack superhero and villain search engine built with industry-standard technologies and best practices.
 
-[Live Demo](https://hero-searcher.vercel.app) • [Report Bug](https://github.com/enekomb/HeroSearcher/issues) • [Request Feature](https://github.com/enekomb/HeroSearcher/issues)
+[Report Bug](https://github.com/enekomb/HeroSearcher/issues) • [Request Feature](https://github.com/enekomb/HeroSearcher/issues)
 
 </div>
 
