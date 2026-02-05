@@ -5,10 +5,9 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// The datasource URL is configured in prisma.config.ts
-// Default: DATABASE_URL="file:./dev.db"
 datasource db {
   provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model User {

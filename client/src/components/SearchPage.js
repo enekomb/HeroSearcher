@@ -77,7 +77,7 @@ const SearchPage = ({ user }) => {
     try {
       await addFavorite(user.uid, {
         name: character.name,
-        image: character.image.url,
+        image: character.image?.url || '',
         powerstats: character.powerstats,
       });
 
@@ -104,12 +104,14 @@ const SearchPage = ({ user }) => {
         <div className="carousel">
           <button className="carousel-button left" onClick={prevHeroes}>❮</button>
           <div className="hero-container">
-            {randomHeroes.map((hero) => (
-              <div key={hero.id} className="hero-card">
-                <img src={hero.image.url} alt={hero.name} className="hero-image" />
-                <h3>{hero.name}</h3>
-              </div>
-            ))}
+            {randomHeroes && randomHeroes.length > 0 && randomHeroes
+              .filter(hero => hero && hero.image && hero.image.url)
+              .map((hero) => (
+                <div key={hero.id} className="hero-card">
+                  <img src={hero.image.url} alt={hero.name} className="hero-image" />
+                  <h3>{hero.name}</h3>
+                </div>
+              ))}
           </div>
           <button className="carousel-button right" onClick={nextHeroes}>❯</button>
         </div>
@@ -129,19 +131,21 @@ const SearchPage = ({ user }) => {
         </div>
         {loading && <p className="loading">Loading...</p>}
         <div className="results-container">
-          {searchResults.map((character) => (
-            <div key={character.id} className="result-card">
-              <img src={character.image.url} alt={character.name} className="result-image" />
-              <h3>{character.name}</h3>
-              <button 
-                onClick={() => handleAddFavorite(character)} 
-                className="favorite-button"
-                disabled={favorites.includes(character.name)}
-              >
-                {favorites.includes(character.name) ? '✓ Added' : 'Add to Favorites'}
-              </button>
-            </div>
-          ))}
+          {searchResults && searchResults.length > 0 && searchResults
+            .filter(character => character && character.image && character.image.url)
+            .map((character) => (
+              <div key={character.id} className="result-card">
+                <img src={character.image.url} alt={character.name} className="result-image" />
+                <h3>{character.name}</h3>
+                <button 
+                  onClick={() => handleAddFavorite(character)} 
+                  className="favorite-button"
+                  disabled={favorites.includes(character.name)}
+                >
+                  {favorites.includes(character.name) ? '✓ Added' : 'Add to Favorites'}
+                </button>
+              </div>
+            ))}
         </div>
       </main>
     </div>
