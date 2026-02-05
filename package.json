@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "HeroSearcher - Professional Portfolio Project with SQLite, React, and Express",
   "private": true,
-  "workspaces": [
-    "client",
-    "api"
-  ],
   "scripts": {
     "install-all": "npm install && cd api && npm install --legacy-peer-deps && cd ../client && npm install --legacy-peer-deps",
     "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\"",
