@@ -104,14 +104,14 @@ const SearchPage = ({ user }) => {
         <div className="carousel">
           <button className="carousel-button left" onClick={prevHeroes}>❮</button>
           <div className="hero-container">
-            {randomHeroes && randomHeroes.length > 0 && randomHeroes.map((hero) => (
-              hero && hero.image && hero.image.url && (
+            {randomHeroes && randomHeroes.length > 0 && randomHeroes
+              .filter(hero => hero && hero.image && hero.image.url)
+              .map((hero) => (
                 <div key={hero.id} className="hero-card">
                   <img src={hero.image.url} alt={hero.name} className="hero-image" />
                   <h3>{hero.name}</h3>
                 </div>
-              )
-            ))}
+              ))}
           </div>
           <button className="carousel-button right" onClick={nextHeroes}>❯</button>
         </div>
@@ -131,8 +131,9 @@ const SearchPage = ({ user }) => {
         </div>
         {loading && <p className="loading">Loading...</p>}
         <div className="results-container">
-          {searchResults && searchResults.length > 0 && searchResults.map((character) => (
-            character && character.image && character.image.url && (
+          {searchResults && searchResults.length > 0 && searchResults
+            .filter(character => character && character.image && character.image.url)
+            .map((character) => (
               <div key={character.id} className="result-card">
                 <img src={character.image.url} alt={character.name} className="result-image" />
                 <h3>{character.name}</h3>
@@ -144,8 +145,7 @@ const SearchPage = ({ user }) => {
                   {favorites.includes(character.name) ? '✓ Added' : 'Add to Favorites'}
                 </button>
               </div>
-            )
-          ))}
+            ))}
         </div>
       </main>
     </div>
