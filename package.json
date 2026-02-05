@@ -1,47 +1,31 @@
 {
-  "name": "hero_searcher",
-  "version": "0.1.0",
+  "name": "hero-searcher-monorepo",
+  "version": "1.0.0",
+  "description": "HeroSearcher - Professional Portfolio Project with SQLite, React, and Express",
   "private": true,
-  "dependencies": {
-    "@firebasegen/default": "file:generated/javascript/default",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@vercel/analytics": "^1.3.1",
-    "axios": "^1.7.7",
-    "dotenv": "^16.4.5",
-    "firebase": "^10.14.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2",
-    "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"
-  },
+  "workspaces": [
+    "client",
+    "api"
+  ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "install-all": "npm install && cd api && npm install --legacy-peer-deps && cd ../client && npm install --legacy-peer-deps",
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:client\"",
+    "dev:api": "cd api && npm run dev",
+    "dev:client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "test": "cd client && npm test"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "keywords": [
+    "hero",
+    "searcher",
+    "react",
+    "express",
+    "sqlite",
+    "monorepo"
+  ],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "concurrently": "^8.2.2"
   }
 }

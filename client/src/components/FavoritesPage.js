@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
-import { db, auth } from '../firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import '../Stylesheets/FavoritesPage.css'; // Importa el CSS
+import { getFavorites, deleteFavorite } from '../database';
+import { auth } from '../auth';
+import '../Stylesheets/FavoritesPage.css';
 
 const FavoritesPage = () => {
   const [favorites, setFavorites] = useState([]);
@@ -10,10 +9,10 @@ const FavoritesPage = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
-        fetchFavorites(user.uid);
+        fetchUserFavorites(user.uid);
       } else {
         setUser(null);
         setFavorites([]);
@@ -23,19 +22,31 @@ const FavoritesPage = () => {
     return () => unsubscribe();
   }, []);
 
-  const fetchFavorites = async (userId) => {
+  // Animate stat bars after favorites are loaded
+  useEffect(() => {
+    if (favorites.length > 0) {
+      const statOrder = ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'];
+      
+      favorites.forEach((favorite, index) => {
+        statOrder.forEach((stat) => {
+          setTimeout(() => {
+            const statFillElement = document.querySelector(`.stat-fill[data-stat="stat-${stat}-${favorite.id}"]`);
+            if (statFillElement) {
+              statFillElement.style.width = `${favorite.powerstats[stat]}%`;
+            }
+          }, 500 * (index + 1));
+        });
+      });
+    }
+  }, [favorites]);
+
+  const fetchUserFavorites = async (userId) => {
     setLoading(true);
     try {
-      const favoritesCollection = collection(db, `users/${userId}/favorites`);
-      const favoritesSnapshot = await getDocs(favoritesCollection);
-      const favoritesList = favoritesSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
+      const favoritesList = await getFavorites(userId);
       setFavorites(favoritesList);
     } catch (error) {
-      console.error('Error al obtener favoritos:', error);
+      console.error('Error fetching favorites:', error);
     } finally {
       setLoading(false);
     }
@@ -44,10 +55,10 @@ const FavoritesPage = () => {
   const handleDelete = async (id) => {
     if (user) {
       try {
-        await deleteDoc(doc(db, `users/${user.uid}/favorites`, id));
+        await deleteFavorite(id);
         setFavorites((prevFavorites) => prevFavorites.filter((favorite) => favorite.id !== id));
       } catch (error) {
-        console.error('Error al eliminar favorito:', error);
+        console.error('Error deleting favorite:', error);
       }
     }
   };
@@ -55,7 +66,7 @@ const FavoritesPage = () => {
   const statOrder = ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'];
 
   if (loading) {
-    return <div>Cargando favoritos...</div>;
+    return <div>Loading favorites...</div>;
   }
 
   return (
@@ -74,7 +85,7 @@ const FavoritesPage = () => {
                     <div className="stat-bar-container">
                       <div
                         className="stat-fill"
-                        data-stat={`stat-${stat}-${favorite.id}`} // Cambiado a usar `favorite.id`
+                        data-stat={`stat-${stat}-${favorite.id}`}
                         style={{ width: '0%', backgroundColor: getStatColor(stat) }}
                       >
                         <span className="stat-label">{favorite.powerstats[stat]}</span>
@@ -84,46 +95,35 @@ const FavoritesPage = () => {
                 ))}
               </div>
               <button onClick={() => handleDelete(favorite.id)} className="button2">
-                Eliminar
+                Delete
               </button>
             </div>
           ))}
         </div>
       ) : (
-        <center><p>you don't have any favorites yet, use the search bar to add the characters you like the most.</p></center>
+        <center><p>You don't have any favorites yet. Use the search bar to add the characters you like the most.</p></center>
       )}
-      {/* Cargar las estadísticas con un pequeño ritmo */}
-      {favorites.forEach((favorite, index) => {
-        statOrder.forEach((stat) => {
-          setTimeout(() => {
-            const statFillElement = document.querySelector(`.stat-fill[data-stat="stat-${stat}-${favorite.id}"]`);
-            if (statFillElement) {
-              statFillElement.style.width = `${favorite.powerstats[stat]}%`;
-            }
-          }, 500 * (index + 1)); // Retraso para la animación en función del índice
-        });
-      })}
     </div>
   );
 };
 
-// Función para obtener el color de la barra de acuerdo a la estadística
+// Function to get the color of the bar according to the statistic
 const getStatColor = (stat) => {
   switch (stat) {
     case 'intelligence':
-      return '#4CAF50'; // Verde
+      return '#4CAF50'; // Green
     case 'strength':
-      return '#2196F3'; // Azul
+      return '#2196F3'; // Blue
     case 'speed':
-      return '#FF9800'; // Naranja
+      return '#FF9800'; // Orange
     case 'durability':
-      return '#9C27B0'; // Morado
+      return '#9C27B0'; // Purple
     case 'power':
-      return '#F44336'; // Rojo
+      return '#F44336'; // Red
     case 'combat':
-      return '#FFC107'; // Amarillo
+      return '#FFC107'; // Yellow
     default:
-      return '#B0BEC5'; // Gris
+      return '#B0BEC5'; // Gray
   }
 };
 

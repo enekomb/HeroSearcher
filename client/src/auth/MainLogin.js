@@ -1,5 +1,5 @@
 // src/auth/MainLogin.js
-import { googleSignIn, githubSignIn } from '../firebase'; // Import the sign-in functions
+import { googleSignIn, githubSignIn } from '../auth'; // Import the sign-in functions
 import '../Stylesheets/MainLogin.css'; // Import the CSS file
 
 const MainLogin = () => {

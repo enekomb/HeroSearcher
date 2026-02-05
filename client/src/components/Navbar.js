@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { auth } from '../firebase';
+import { auth } from '../auth';
 import '../Stylesheets/Navbar.css'; // Import the CSS file
 
 const Navbar = ({ user }) => {

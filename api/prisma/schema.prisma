@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// The datasource URL is configured in prisma.config.ts
+// Default: DATABASE_URL="file:./dev.db"
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id          String     @id @default(uuid())
+  email       String     @unique
+  displayName String?
+  createdAt   DateTime   @default(now())
+  favorites   Favorite[]
+}
+
+model Favorite {
+  id         String   @id @default(uuid())
+  userId     String
+  name       String
+  image      String
+  intelligence String?
+  strength   String?
+  speed      String?
+  durability String?
+  power      String?
+  combat     String?
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

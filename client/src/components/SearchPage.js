@@ -1,41 +1,42 @@
-import React, { useEffect, useState, useCallback } from 'react'; // Asegúrate de importar useCallback
-import { db } from '../firebase'; // Importa tu configuración de Firebase
-import { collection, addDoc, getDocs } from 'firebase/firestore';
-import '../Stylesheets/SearchPage.css'; // Importa el CSS
+import React, { useEffect, useState, useCallback } from 'react';
+import { addFavorite, getFavorites, createUser } from '../database';
+import '../Stylesheets/SearchPage.css';
 
 const totalHeroes = 731;
 const apiKey = process.env.REACT_APP_SUPERHERO_API_KEY;
-const heroesToShow = 6; // Número de héroes a mostrar en el carrusel
+const heroesToShow = 6;
 
 const SearchPage = ({ user }) => {
   const [heroName, setHeroName] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [randomHeroes, setRandomHeroes] = useState([]);
-  const [favorites, setFavorites] = useState([]); // Estado para almacenar los favoritos
+  const [favorites, setFavorites] = useState([]);
 
-  // Función para obtener los favoritos del usuario
-  const fetchFavorites = useCallback(async () => { // Usar useCallback para memoizar la función
+  // Function to fetch user favorites
+  const fetchFavorites = useCallback(async () => {
     if (!user) return;
 
     try {
-      const favoritesRef = collection(db, `users/${user.uid}/favorites`);
-      const favoritesSnapshot = await getDocs(favoritesRef);
-      const favoritesList = favoritesSnapshot.docs.map((doc) => doc.data().name);
-      setFavorites(favoritesList);
+      // Ensure user exists in database
+      await createUser(user.uid, user.email, user.displayName);
+      
+      const favoritesList = await getFavorites(user.uid);
+      const favoriteNames = favoritesList.map((fav) => fav.name);
+      setFavorites(favoriteNames);
     } catch (error) {
       console.error('Error fetching favorites:', error);
     }
-  }, [user]); // Dependencia de user para que se ejecute cuando cambie
+  }, [user]);
 
   useEffect(() => {
-    fetchRandomHeroes(); // Cargar héroes aleatorios
+    fetchRandomHeroes();
     if (user) {
-      fetchFavorites(); // Cargar favoritos si hay usuario
+      fetchFavorites();
     }
-  }, [user, fetchFavorites]); // Añadir fetchFavorites al array de dependencias
+  }, [user, fetchFavorites]);
 
-  // Función para obtener héroes aleatorios
+  // Function to fetch random heroes
   const fetchRandomHeroes = async () => {
     const randomIndices = Array.from({ length: heroesToShow }, () => Math.floor(Math.random() * totalHeroes) + 1);
     const fetchedHeroes = await Promise.all(
@@ -74,8 +75,7 @@ const SearchPage = ({ user }) => {
     }
 
     try {
-      const favoritesRef = collection(db, `users/${user.uid}/favorites`);
-      await addDoc(favoritesRef, {
+      await addFavorite(user.uid, {
         name: character.name,
         image: character.image.url,
         powerstats: character.powerstats,

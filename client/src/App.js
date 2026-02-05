@@ -10,7 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import RedirectIfAuthenticated from './components/RedirectIfAuthenticated'; 
 import NotFound from './components/NotFound';
 import './Stylesheets/App.css'; 
-import { auth } from './firebase';
+import { auth } from './auth';
 
 const App = () => 
 {

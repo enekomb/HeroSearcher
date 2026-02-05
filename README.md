@@ -1,102 +1,229 @@
-# 🦸‍♂️ Superheroes & Villains Search Engine
+# 🦸‍♂️ HeroSearcher - Professional Portfolio Project
 
-Welcome to my first web development project! 🎉
+<div align="center">
 
-This is a search engine for superheroes and villains where you can:
-- Explore the stats of various iconic characters.
-- Add your favorites to a custom list.
-- The app uses **Firebase** to store the favorites list persistently.
-- Hosted on **Vercel** and performs API calls to fetch character data from an external API.
+![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Express](https://img.shields.io/badge/Express-4.18-000000?style=for-the-badge&logo=express&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-7.3-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white)
 
----
+A modern, full-stack superhero and villain search engine built with industry-standard technologies and best practices.
 
-## 🚀 Demo
+[Live Demo](https://hero-searcher.vercel.app) • [Report Bug](https://github.com/enekomb/HeroSearcher/issues) • [Request Feature](https://github.com/enekomb/HeroSearcher/issues)
 
-🌍 You can try the live app here: [Live Demo](https://hero-searcher.vercel.app)
-
----
-
-## 🛠️ Technologies Used
-
-This project was built using the following technologies and tools:
-
-- **Frontend:**
-  - [React.js](https://reactjs.org/) - Main framework for the user interface.
-  - [CSS3](https://www.w3.org/Style/CSS/Overview.en.html) - Used for styling the application.
-
-- **Backend & Database:**
-  - [Firebase](https://firebase.google.com/) - NoSQL database and authentication.
-  - [REST API](https://superheroapi.com/) - External API to fetch superhero data.
-
-- **Hosting & Deployment:**
-  - [Vercel](https://vercel.com/) - Used for deploying the app.
+</div>
 
 ---
 
-## 📐 Application Architecture
+## 📋 Table of Contents
 
-Below is a visual representation of the general architecture of the app:
-
-```mermaid
-graph TD;
-    UI[React Frontend] -->|Requests| API[Superheroes & Villains API];
-    UI -->|Database Operations| Firebase[Firebase Database];
-    Firebase -->|Authentication| Auth[Firebase Authentication];
-    API -->|Fetch Stats| Stats[Character Stats];
-    UI -->|Deployment| Vercel[Hosted on Vercel];
-```
-
-The app follows a client-server architecture. **React** manages the user interface and client-side interactions. It performs `GET` requests to an external API to fetch character data. The favorites data is stored in **Firebase**, and user sessions are handled through Firebase Authentication. The app is deployed on **Vercel**.
+- [About](#about)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+- [Architecture](#architecture)
+- [Technical Challenges](#technical-challenges)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## 🖥️ Screenshots
+## 🎯 About
 
-### Home Page
-
-<img src="./IMG/HomePage1.png" width="400" alt="Home Page" />
-
-### Favorites Page
-
-<img src="./IMG/Favorites.png" width="400" alt="Favorites Page" />
+HeroSearcher is a professional portfolio project demonstrating modern full-stack development practices. Users can search for superheroes and villains, explore their stats, and manage a personalized favorites list. The application showcases a complete refactor from Firebase to SQLite, implementing industry-standard security practices and clean code principles.
 
 ---
 
-## 🔧 Installation & Setup
+## 🛠️ Tech Stack
 
-To clone and run this project locally, follow these steps:
+### Frontend
+- **React 18.3.1** - Modern UI library with hooks and functional components
+- **React Router 6** - Client-side routing
+- **CSS3** - Custom styling with modern features
 
-1. Clone the repository:
+### Backend
+- **Express.js** - Lightweight Node.js web framework
+- **Helmet** - Security middleware for HTTP headers
+- **CORS** - Cross-Origin Resource Sharing configuration
+- **Prisma ORM** - Type-safe database client
 
+### Database
+- **SQLite** - Lightweight, serverless relational database
+- **Prisma** - Modern ORM with migration system
+
+### Development Tools
+- **Concurrently** - Run multiple commands simultaneously
+- **Nodemon** - Auto-restart development server
+- **dotenv** - Environment variable management
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18.x or higher
+- npm 9.x or higher
+
+### Installation
+
+1. **Clone the repository**
    ```bash
    git clone https://github.com/enekomb/HeroSearcher.git
+   cd HeroSearcher
    ```
 
-2. Navigate to the project directory:
-
+2. **Install all dependencies**
    ```bash
-   cd repo-name
+   npm run install-all
    ```
 
-3. Install the dependencies:
-
+3. **Set up environment variables**
+   
+   Create a `.env` file in the root directory (use `.env.example` as template):
    ```bash
-   npm install
+   cp .env.example .env
+   ```
+   
+   Add your Superhero API key:
+   ```env
+   REACT_APP_SUPERHERO_API_KEY=your_api_key_here
+   REACT_APP_API_URL=http://localhost:3001
    ```
 
-4. Create a `.env` file and add your Firebase and API environment variables
-
-
-5. Start the development server:
-
+4. **Initialize the database**
    ```bash
-   npm start
+   cd api
+   npx prisma migrate dev
+   cd ..
    ```
 
-6. Access the app at [http://localhost:3000](http://localhost:3000).
+5. **Start the development servers**
+   ```bash
+   npm run dev
+   ```
+   
+   This will start both the API server (port 3001) and the React development server (port 3000).
+
+6. **Access the application**
+   
+   Open your browser and navigate to `http://localhost:3000`
 
 ---
 
-## 📋 Contribution Guidelines
+## 🏗️ Architecture
 
-Contributions are welcome! If you have suggestions or find bugs, feel free to open an [issue](https://github.com/enekomb/HeroSearcher/issues).
+```mermaid
+graph TD
+    A[React Frontend] -->|HTTP Requests| B[Express API]
+    B -->|Prisma ORM| C[SQLite Database]
+    A -->|External API| D[Superhero API]
+    B -->|CORS + Helmet| E[Security Layer]
+```
+
+### Project Structure
+
+```
+HeroSearcher/
+├── api/                    # Backend API
+│   ├── src/
+│   │   └── index.js       # Express server with endpoints
+│   ├── prisma/
+│   │   └── schema.prisma  # Database schema
+│   └── package.json       # API dependencies
+├── client/                 # Frontend application
+│   ├── src/
+│   │   ├── components/    # React components
+│   │   ├── auth/          # Authentication logic
+│   │   ├── Stylesheets/   # CSS files
+│   │   ├── auth.js        # Auth utilities
+│   │   ├── database.js    # API client
+│   │   └── App.js         # Main app component
+│   ├── public/            # Static assets
+│   └── package.json       # Client dependencies
+├── package.json           # Root package with scripts
+├── LICENSE                # ISC License
+└── README.md              # This file
+```
+
+---
+
+## 💡 Technical Challenges
+
+This project represents a complete professional refactor with the following accomplishments:
+
+### 1. Database Migration
+- **Challenge**: Migrating from Firebase's NoSQL document structure to SQLite's relational model
+- **Solution**: Designed a normalized schema with Prisma ORM, implementing proper relationships between users and favorites
+- **Impact**: Improved data integrity and query performance
+
+### 2. Universal English Standardization
+- **Challenge**: Converting Spanish codebase to English while maintaining functionality
+- **Solution**: Systematically translated all variables, functions, comments, and UI strings
+- **Impact**: Enhanced code readability and international collaboration potential
+
+### 3. Security Implementation
+- **Challenge**: Adding enterprise-level security to a portfolio project
+- **Solution**: Integrated Helmet.js for HTTP header security and CORS for API protection
+- **Impact**: Production-ready security posture
+
+### 4. Monorepo Architecture
+- **Challenge**: Transforming a single-directory project into a maintainable monorepo
+- **Solution**: Separated frontend and backend with unified scripts using Concurrently
+- **Impact**: Improved development experience and deployment flexibility
+
+### 5. API Design
+- **Challenge**: Building a RESTful API from scratch to replace Firebase SDK
+- **Solution**: Created clean, documented endpoints following REST principles
+- **Impact**: Better separation of concerns and testing capabilities
+
+---
+
+## ✨ Features
+
+- 🔍 **Search Engine** - Find any superhero or villain from an extensive database
+- ⭐ **Favorites System** - Save and manage your favorite characters
+- 📊 **Character Stats** - View detailed power statistics with animated bars
+- 🎨 **Responsive Design** - Works seamlessly on desktop and mobile devices
+- 🔐 **Authentication** - Demo authentication system (Google & GitHub flows)
+- 🎯 **Carousel** - Browse random heroes with an interactive carousel
+- ⚡ **Real-time Updates** - Instant feedback on favorite additions and deletions
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+
+Copyright (c) 2026 enekomb
+
+---
+
+## 📞 Contact
+
+**enekomb** - [@enekomb](https://github.com/enekomb)
+
+Project Link: [https://github.com/enekomb/HeroSearcher](https://github.com/enekomb/HeroSearcher)
+
+---
+
+<div align="center">
+
+Made with ❤️ and ☕ by enekomb
+
+⭐ Star this repo if you find it helpful!
+
+</div>

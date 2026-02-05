@@ -1,0 +1,79 @@
+.container {
+    padding: 20px;
+}
+
+.cardContainer {
+	color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px; /* Increase padding for more space */
+    margin: 10px;
+    text-align: center;
+    width: 220px; /* Increase card width */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; /* Add animation on hover */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.image {
+    width: 100%;  /* Adjust width to 100% of container */
+    height: 120px; /* Fixed height for cards */
+    border-radius: 4px; /* Rounded corners */
+    object-fit: contain; /* Adjust image to fit completely without cropping */
+    object-position: top; /* Keep top of image visible */
+}
+
+
+
+.powerStats {
+    margin-top: 10px;
+    text-align: left; /* Align text left for better readability */
+}
+
+.stat-bar {
+    margin-bottom: 10px;
+    display: flex; /* Use flexbox for better alignment */
+    align-items: center; /* Center vertically */
+}
+
+.stat-name {
+    flex: 1; /* Make stat name occupy available space */
+}
+
+.stat-bar-container {
+    background-color: #e0e0e0; /* Bar background color */
+    border-radius: 4px;
+    height: 20px; /* Bar height */
+    overflow: hidden;
+    flex: 2; /* Make bar occupy twice the space of name */
+    margin-left: 10px; /* Add left margin to bar */
+}
+
+.stat-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease; /* Fill animation */
+}
+
+.button2 {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.button2:hover {
+    background-color: #d32f2f; /* Darker color on mouse hover */
+}
