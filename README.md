@@ -1,267 +1,192 @@
-# 🦸‍♂️ HeroSearcher - Professional Portfolio Project
+# HeroSearcher 🦸‍♂️
 
-<div align="center">
+[![License: ISC](https://img.shields.io/badge/License-ISC_2026-blue.svg)](https://opensource.org/licenses/ISC)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933.svg?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4.18-000000.svg?logo=express&logoColor=white)](https://expressjs.com/)
+[![React](https://img.shields.io/badge/React-18.3.1-61DAFB.svg?logo=react&logoColor=black)](https://reactjs.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-5.22-2D3748.svg?logo=prisma&logoColor=white)](https://www.prisma.io/)
+[![SQLite](https://img.shields.io/badge/SQLite-3-003B57.svg?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
 
-![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-![Express](https://img.shields.io/badge/Express-4.18-000000?style=for-the-badge&logo=express&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![Prisma](https://img.shields.io/badge/Prisma-7.3-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white)
+> **HeroSearcher** is a full‑stack superhero and villain search engine with authentication, favorites management, and a modern monorepo architecture using React, Express, Prisma, and SQLite.
 
-A modern, full-stack superhero and villain search engine built with industry-standard technologies and best practices.
-
-[Report Bug](https://github.com/enekomb/HeroSearcher/issues) • [Request Feature](https://github.com/enekomb/HeroSearcher/issues)
-
-</div>
+_Live demo: Coming soon._
 
 ---
 
-## 📋 Table of Contents
+## 📘 Project Description
 
-- [About](#about)
-- [Tech Stack](#tech-stack)
-- [Quick Start](#quick-start)
-- [Architecture](#architecture)
-- [Technical Challenges](#technical-challenges)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
+**HeroSearcher** showcases professional full‑stack patterns through a search experience for comic characters.  
+Users authenticate, explore heroes and villains via the Superhero API, and persist their favorite characters and power stats in a relational SQLite database behind a secure Express API.
 
 ---
 
-## 🎯 About
+## ✨ Key Features
 
-HeroSearcher is a professional portfolio project demonstrating modern full-stack development practices. Users can search for superheroes and villains, explore their stats, and manage a personalized favorites list. The application showcases a complete refactor from Firebase to SQLite, implementing industry-standard security practices and clean code principles.
+- **Hero Search Engine**: Search an extensive catalog of superheroes and villains using the public Superhero API.
+- **Random Hero Carousel**: Browse a rotating carousel of random characters directly from the home screen.
+- **Favorites Management**: Add heroes to a personal favorites list backed by a relational database.
+- **Authentication Flow**: Auth integration (via Firebase-style `auth` module) with protected and public routes.
+- **Character Power Stats**: Store and display detailed power statistics (intelligence, strength, speed, durability, power, combat).
+- **Responsive UI**: Optimized for desktop and mobile viewing.
+- **Monorepo Setup**: Unified root scripts orchestrate both API and React client.
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **React 18.3.1** - Modern UI library with hooks and functional components
-- **React Router 6** - Client-side routing
-- **CSS3** - Custom styling with modern features
+- **Frontend**
+  - **React 18.3.1** with functional components and hooks
+  - **React Router 6** for client-side routing
+  - **CSS3** with custom stylesheets
+  - **Superhero API** as the external data source
 
-### Backend
-- **Express.js** - Lightweight Node.js web framework
-- **Helmet** - Security middleware for HTTP headers
-- **CORS** - Cross-Origin Resource Sharing configuration
-- **Prisma ORM** - Type-safe database client
+- **Backend**
+  - **Node.js 18+**
+  - **Express 4.18**
+  - **Helmet** for HTTP header hardening
+  - **CORS** for cross-origin configuration
 
-### Database
-- **SQLite** - Lightweight, serverless relational database
-- **Prisma** - Modern ORM with migration system
+- **Database**
+  - **SQLite 3** as the relational data store
+  - **Prisma ORM 5.22** with migrations and a type-safe client
+  - Schema:
+    - `User` with `favorites` relation
+    - `Favorite` with hero name, image, and power stats
 
-### Development Tools
-- **Concurrently** - Run multiple commands simultaneously
-- **Nodemon** - Auto-restart development server
-- **dotenv** - Environment variable management
+- **Developer Tooling**
+  - **Concurrently** for running API and client together
+  - **Nodemon** for auto-reloading the API
+  - **dotenv** for environment variable management
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
-### Prerequisites
+### ✅ Prerequisites
 
-- Node.js 18.x or higher
-- npm 9.x or higher
+- **Node.js** 18+  
+- **npm** 9+  
 
-### Installation
+### 💾 Installation & Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/enekomb/HeroSearcher.git
    cd HeroSearcher
    ```
 
-2. **Install all dependencies**
+2. **Install all dependencies (root, API, client)**
+
    ```bash
    npm run install-all
    ```
 
-3. **Set up environment variables**
-   
-   Create a `.env` file in the root directory (use `.env.example` as template):
+3. **Configure environment variables**
+
+   Create a root `.env` file from the example and add your Superhero API configuration:
+
    ```bash
    cp .env.example .env
    ```
-   
-   Add your Superhero API key:
+
+   Minimal required variables:
+
    ```env
    REACT_APP_SUPERHERO_API_KEY=your_api_key_here
    REACT_APP_API_URL=http://localhost:3001
    ```
 
 4. **Initialize the database**
+
    ```bash
    cd api
    npx prisma migrate dev
    cd ..
    ```
 
-5. **Start the development servers**
+5. **Start the development environment**
+
    ```bash
    npm run dev
    ```
-   
-   This will start both the API server (port 3001) and the React development server (port 3000).
 
-6. **Access the application**
-   
-   Open your browser and navigate to `http://localhost:3000`
+   This runs:
+   - API on `http://localhost:3001`
+   - React client on `http://localhost:3000`
+
+6. **Open the application**
+
+   Navigate to `http://localhost:3000` and sign in to start searching and saving heroes.
 
 ---
 
-## 🏗️ Architecture
+## 🧩 Monorepo Scripts
 
-```mermaid
-graph TD
-    A[React Frontend] -->|HTTP Requests| B[Express API]
-    B -->|Prisma ORM| C[SQLite Database]
-    A -->|External API| D[Superhero API]
-    B -->|CORS + Helmet| E[Security Layer]
+Root `package.json`:
+
+| **Command**         | **Description**                                      |
+|---------------------|------------------------------------------------------|
+| `npm run install-all` | Install dependencies for root, `api`, and `client` |
+| `npm run dev`       | Run API (`dev:api`) and client (`dev:client`) in parallel |
+| `npm run dev:api`   | Start the Express API in watch mode                  |
+| `npm run dev:client`| Start the React development server                   |
+| `npm run build`     | Build the React client for production                |
+| `npm test`          | Run client tests                                     |
+
+**API scripts** (`api/package.json`)
+
+```bash
+cd api
+npm run dev        # Start API with nodemon
+npm run start      # Start API without nodemon
+npm run seed       # Seed initial data if applicable
+npm run db:generate
+npm run db:migrate
+npm run db:push
 ```
 
-### Project Structure
+**Client scripts** (`client/package.json`)
 
-```
-HeroSearcher/
-├── api/                    # Backend API
-│   ├── src/
-│   │   └── index.js       # Express server with endpoints
-│   ├── prisma/
-│   │   └── schema.prisma  # Database schema
-│   └── package.json       # API dependencies
-├── client/                 # Frontend application
-│   ├── src/
-│   │   ├── components/    # React components
-│   │   ├── auth/          # Authentication logic
-│   │   ├── Stylesheets/   # CSS files
-│   │   ├── auth.js        # Auth utilities
-│   │   ├── database.js    # API client
-│   │   └── App.js         # Main app component
-│   ├── public/            # Static assets
-│   └── package.json       # Client dependencies
-├── package.json           # Root package with scripts
-├── LICENSE                # ISC License
-└── README.md              # This file
+```bash
+cd client
+npm start          # Start React dev server
+npm run build      # Build for production
+npm test           # Run React tests
 ```
 
 ---
 
-## 💡 Technical Challenges
+## 🔭 Future Enhancements
 
-This project represents a complete professional refactor with the following accomplishments:
-
-### 1. Database Migration
-- **Challenge**: Migrating from Firebase's NoSQL document structure to SQLite's relational model
-- **Solution**: Designed a normalized schema with Prisma ORM, implementing proper relationships between users and favorites
-- **Impact**: Improved data integrity and query performance
-
-### 2. Universal English Standardization
-- **Challenge**: Converting Spanish codebase to English while maintaining functionality
-- **Solution**: Systematically translated all variables, functions, comments, and UI strings
-- **Impact**: Enhanced code readability and international collaboration potential
-
-### 3. Security Implementation
-- **Challenge**: Adding enterprise-level security to a portfolio project
-- **Solution**: Integrated Helmet.js for HTTP header security and CORS for API protection
-- **Impact**: Production-ready security posture
-
-### 4. Monorepo Architecture
-- **Challenge**: Transforming a single-directory project into a maintainable monorepo
-- **Solution**: Separated frontend and backend with unified scripts using Concurrently
-- **Impact**: Improved development experience and deployment flexibility
-
-### 5. API Design
-- **Challenge**: Building a RESTful API from scratch to replace Firebase SDK
-- **Solution**: Created clean, documented endpoints following REST principles
-- **Impact**: Better separation of concerns and testing capabilities
+- **Advanced search filters** (alignment, publisher, power thresholds).
+- **Hero comparison view** for side‑by‑side stat comparisons.
+- **Team builder** for assembling and persisting custom hero teams.
+- **PWA support** for offline usage and installable experience.
+- **Production OAuth flows** (Google/GitHub) with JWT-based sessions.
+- **Dockerized development and CI/CD pipeline** for automated builds and tests.
 
 ---
 
-## ✨ Features
+## 📝 License
 
-- 🔍 **Search Engine** - Find any superhero or villain from an extensive database
-- ⭐ **Favorites System** - Save and manage your favorite characters
-- 📊 **Character Stats** - View detailed power statistics with animated bars
-- 🎨 **Responsive Design** - Works seamlessly on desktop and mobile devices
-- 🔐 **Authentication** - Demo authentication system (Google & GitHub flows)
-- 🎯 **Carousel** - Browse random heroes with an interactive carousel
-- ⚡ **Real-time Updates** - Instant feedback on favorite additions and deletions
+This project is licensed under the **ISC License (2026)**.  
+See the `LICENSE` file in this repository for full details.
 
 ---
 
-## 🚀 Future Improvements
+## 🌐 Other Projects & Portfolio
 
-This project is actively maintained and open to enhancements. Planned improvements include:
-
-### Testing & Quality Assurance
-- **Unit Testing Suite** - Implement Jest and React Testing Library for component testing
-- **API Integration Tests** - Add supertest for endpoint validation
-- **E2E Testing** - Integrate Cypress or Playwright for full user journey testing
-- **Code Coverage** - Establish minimum 80% coverage threshold
-
-### DevOps & Infrastructure
-- **Docker Containerization** - Create multi-stage Dockerfiles for development and production
-- **CI/CD Pipeline** - Set up GitHub Actions for automated testing and deployment
-- **Environment Validation** - Add config validation on startup to catch misconfiguration early
-
-### Feature Enhancements
-- **Advanced Search** - Implement filters by alignment (hero/villain), publisher, and power levels
-- **Character Comparison** - Side-by-side stat comparison for multiple heroes
-- **Team Builder** - Create and save custom superhero teams with aggregate stats
-- **Social Sharing** - Generate shareable cards for favorite heroes
-
-### Performance & UX
-- **Infinite Scroll** - Replace pagination with smooth infinite scrolling
-- **PWA Support** - Add offline capabilities and installable app features
-- **Image Optimization** - Implement lazy loading and WebP format support
-- **Dark Mode** - User-selectable theme with system preference detection
-
-### Security & Authentication
-- **Real OAuth Integration** - Replace mock auth with actual Google/GitHub OAuth2
-- **JWT Authentication** - Implement token-based auth with refresh tokens
-- **Rate Limiting** - Add API rate limiting to prevent abuse
-- **Input Sanitization** - Enhanced XSS protection on all user inputs
+- **CoWorkoholics** – Full‑stack coworking space management platform with real-time room booking and calendar views:  
+  `https://github.com/enekomb/CoWorkoholics`
+- **ComicSants** – Internal POS and inventory management system for hobby stores:  
+  `https://github.com/enekomb/ComicSants`
+- **ComoSapiens** – Burger order management system with custom builder and real-time pricing:  
+  `https://github.com/enekomb/ComoSapiens`
+- **GitHub Portfolio** – Explore more projects and product case studies:  
+  `https://github.com/enekomb`
 
 ---
 
-## 🤝 Contributing
+**Made with ❤️ as part of the HeroSearcher product suite.**
 
-This project welcomes contributions from developers at all skill levels. Whether you're fixing bugs, adding features, or improving documentation, your help is appreciated.
-
-**How to Contribute:**
-1. Fork the repository and create a feature branch
-2. Make your changes with clear, descriptive commits
-3. Ensure your code follows the existing style and patterns
-4. Test your changes thoroughly before submitting
-5. Submit a pull request with a detailed description
-
-For significant changes, please open an issue first to discuss your proposal.
-
----
-
-## 📄 License
-
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
-
-Copyright (c) 2026 enekomb
-
----
-
-## 📞 Contact
-
-**enekomb** - [@enekomb](https://github.com/enekomb)
-
-Project Link: [https://github.com/enekomb/HeroSearcher](https://github.com/enekomb/HeroSearcher)
-
----
-
-<div align="center">
-
-Made with ❤️ and ☕ by enekomb
-
-⭐ Star this repo if you find it helpful!
-
-</div>
